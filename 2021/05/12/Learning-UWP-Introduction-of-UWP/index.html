@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="A series of UWP essays I would like to bring into my blog, for introducing as well as learning about UWP, also this is my first time to use English to write the essay, so hopefully it can help me impr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Learning UWP: Introduction of UWP">
+<meta property="og:url" content="https://craiglin0322.github.io/2021/05/12/Learning-UWP-Introduction-of-UWP/index.html">
+<meta property="og:site_name" content="Craig Lin Blog">
+<meta property="og:description" content="A series of UWP essays I would like to bring into my blog, for introducing as well as learning about UWP, also this is my first time to use English to write the essay, so hopefully it can help me impr">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-05-12T14:49:35.000Z">
+<meta property="article:modified_time" content="2021-05-27T14:26:26.015Z">
+<meta property="article:author" content="Craig Lin">
+<meta property="article:tag" content="UWP">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Learning UWP: Introduction of UWP</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories">Categories</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/CraigLin0322">Projects</a></li>
+         
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post " href="/2021/05/27/Build-AOSP-Android-11/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2021/04/08/Summary-Difference-among-MVC-MVP-and-MVVM/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://craiglin0322.github.io/2021/05/12/Learning-UWP-Introduction-of-UWP/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://craiglin0322.github.io/2021/05/12/Learning-UWP-Introduction-of-UWP/&text=Learning UWP: Introduction of UWP"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://craiglin0322.github.io/2021/05/12/Learning-UWP-Introduction-of-UWP/&title=Learning UWP: Introduction of UWP"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://craiglin0322.github.io/2021/05/12/Learning-UWP-Introduction-of-UWP/&is_video=false&description=Learning UWP: Introduction of UWP"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Learning UWP: Introduction of UWP&body=Check out this article: https://craiglin0322.github.io/2021/05/12/Learning-UWP-Introduction-of-UWP/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://craiglin0322.github.io/2021/05/12/Learning-UWP-Introduction-of-UWP/&title=Learning UWP: Introduction of UWP"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://craiglin0322.github.io/2021/05/12/Learning-UWP-Introduction-of-UWP/&title=Learning UWP: Introduction of UWP"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://craiglin0322.github.io/2021/05/12/Learning-UWP-Introduction-of-UWP/&title=Learning UWP: Introduction of UWP"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://craiglin0322.github.io/2021/05/12/Learning-UWP-Introduction-of-UWP/&title=Learning UWP: Introduction of UWP"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://craiglin0322.github.io/2021/05/12/Learning-UWP-Introduction-of-UWP/&name=Learning UWP: Introduction of UWP&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://craiglin0322.github.io/2021/05/12/Learning-UWP-Introduction-of-UWP/&t=Learning UWP: Introduction of UWP"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#What%E2%80%99s-UWP"><span class="toc-number">1.</span> <span class="toc-text">What’s UWP?</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Learning UWP: Introduction of UWP
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Craig Lin</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-05-12T14:49:35.000Z" itemprop="datePublished">2021-05-12</time>
+        
+        (Updated: <time datetime="2021-05-27T14:26:26.015Z" itemprop="dateModified">2021-05-27</time>)
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Windows-Development/">Windows Development</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/UWP/" rel="tag">UWP</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>A series of UWP essays I would like to bring into my blog, for introducing as well as learning about UWP, also this is my first time to use English to write the essay, so hopefully it can help me improve my English as well.   </p>
+<p>This is the first essay about the UWP, on this article, we will discuss about “What’s UWP” </p>
+<h3 id="What’s-UWP"><a href="#What’s-UWP" class="headerlink" title="What’s UWP?"></a>What’s UWP?</h3><p>UWP, Universal Windows Platform, is one of many ways to create client applications for Windows. UWP apps use WinRT APIs to provide powerful UI and advanced asynchronous features that are ideal for internet-connected devices.  </p>
+<p>So to speak, UWP is a Platform that Microsoft provides for us to simplify the development on any Windows device, —PCs, Xbox One, HoloLens, and so on. Apart from UWP, Microsoft also provide other platforms： </p>
+<ul>
+<li><p>C++ Desktop(Win 32) </p>
+</li>
+<li><p>WPF </p>
+</li>
+<li><p>Windows Forms </p>
+</li>
+</ul>
+<p>to develop, so what’s the distinct among them? How can we choose an appropriate platform to develop our application? Below is the In-depth comparison among all platforms given by Microsoft <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/apps/desktop/choose-your-platform">document</a>: </p>
+<ul>
+<li><p><strong>UWP</strong> is the leading-edge platform for Windows 10 applications and games. It’s a highly customizable platform that uses XAML markup to separate UI (presentation) from code (business logic). UWP is suitable for desktop applications that require a sophisticated UI, styles customization, and graphics-intensive scenarios. UWP also has built-in support for the <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/uwp/design/fluent-design-system/">Fluent Design System</a> for the default UX experience and provides access to the <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows/uwp/get-started/universal-application-platform-guide#how-the-universal-windows-platform-relates-to-windows-runtime-apis">Windows Runtime (WinRT) APIs</a>. By adopting Fluent, UWP automatically supports common input methods such as ink, touch, gamepad, keyboard, and mouse. <strong>Not only can you use UWP to create desktop applications for Windows PCs, but UWP is also the only supported platform for Xbox, HoloLens, and Surface Hub applications. UWP is our newest, leading-edge application platform</strong>. </p>
+</li>
+<li><p><strong>WPF</strong> is the established platform for managed Windows applications with access to .NET 5 or the .NET Framework, and it also uses XAML markup to separate UI from code. This platform is designed for desktop applications that require a sophisticated UI, styles customization, and graphics-intensive scenarios. WPF development skills are similar to UWP development skills, so migration from WPF to UWP apps is easier than migration from Windows Forms. </p>
+</li>
+<li><p><strong>Windows Forms</strong> is the original platform for managed Windows applications with a lightweight UI model and access to .NET 5 or the .NET Framework. It excels at enabling developers to quickly get started building applications, even for developers new to the platform. This is a forms-based, rapid application development platform with a large built-in collection of visual and non-visual drag-and-drop controls. Windows Forms does not use XAML, so deciding later to extend your application to UWP entails a complete re-write of your UI. </p>
+</li>
+<li><p>Using the <strong>Win32</strong> API with C++ makes it possible to achieve the highest levels of performance and efficiency by taking more control of the target platform with unmanaged code than is possible on a managed runtime environment like WinRT and .NET. However, exercising such a level of control over your application’s execution requires greater care and attention to get right, and trades development productivity for runtime performance. </p>
+</li>
+</ul>
+<p>However, from my perspective, as a new beginner of Windows development, it seems like using UWP is a more efficient and easier way to help us get familiar with the windows development process, that’s what I exactly want, and when we need to dive deeper on windows development, at that time, we can start out to learn different platform. </p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories">Categories</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/CraigLin0322">Projects</a></li>
+         
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#What%E2%80%99s-UWP"><span class="toc-number">1.</span> <span class="toc-text">What’s UWP?</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://craiglin0322.github.io/2021/05/12/Learning-UWP-Introduction-of-UWP/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://craiglin0322.github.io/2021/05/12/Learning-UWP-Introduction-of-UWP/&text=Learning UWP: Introduction of UWP"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://craiglin0322.github.io/2021/05/12/Learning-UWP-Introduction-of-UWP/&title=Learning UWP: Introduction of UWP"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://craiglin0322.github.io/2021/05/12/Learning-UWP-Introduction-of-UWP/&is_video=false&description=Learning UWP: Introduction of UWP"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Learning UWP: Introduction of UWP&body=Check out this article: https://craiglin0322.github.io/2021/05/12/Learning-UWP-Introduction-of-UWP/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://craiglin0322.github.io/2021/05/12/Learning-UWP-Introduction-of-UWP/&title=Learning UWP: Introduction of UWP"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://craiglin0322.github.io/2021/05/12/Learning-UWP-Introduction-of-UWP/&title=Learning UWP: Introduction of UWP"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://craiglin0322.github.io/2021/05/12/Learning-UWP-Introduction-of-UWP/&title=Learning UWP: Introduction of UWP"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://craiglin0322.github.io/2021/05/12/Learning-UWP-Introduction-of-UWP/&title=Learning UWP: Introduction of UWP"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://craiglin0322.github.io/2021/05/12/Learning-UWP-Introduction-of-UWP/&name=Learning UWP: Introduction of UWP&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://craiglin0322.github.io/2021/05/12/Learning-UWP-Introduction-of-UWP/&t=Learning UWP: Introduction of UWP"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2021
+    Craig Lin
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories">Categories</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/CraigLin0322">Projects</a></li>
+         
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

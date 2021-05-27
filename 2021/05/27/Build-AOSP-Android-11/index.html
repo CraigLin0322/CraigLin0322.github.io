@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Encapsulate about how to build your own Android 11 from AOSP on Ubuntu 18.04  Envrionment set upOSIt’s recommended to use Linux as your compile OS, since MAC is no longer supprted from June 22, 2021,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Build AOSP Android 11">
+<meta property="og:url" content="https://craiglin0322.github.io/2021/05/27/Build-AOSP-Android-11/index.html">
+<meta property="og:site_name" content="Craig Lin Blog">
+<meta property="og:description" content="Encapsulate about how to build your own Android 11 from AOSP on Ubuntu 18.04  Envrionment set upOSIt’s recommended to use Linux as your compile OS, since MAC is no longer supprted from June 22, 2021,">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-05-27T14:19:47.000Z">
+<meta property="article:modified_time" content="2021-05-27T14:26:26.015Z">
+<meta property="article:author" content="Craig Lin">
+<meta property="article:tag" content="AOSP">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Build AOSP Android 11</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories">Categories</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/CraigLin0322">Projects</a></li>
+         
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="/2021/05/12/Learning-UWP-Introduction-of-UWP/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://craiglin0322.github.io/2021/05/27/Build-AOSP-Android-11/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://craiglin0322.github.io/2021/05/27/Build-AOSP-Android-11/&text=Build AOSP Android 11"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://craiglin0322.github.io/2021/05/27/Build-AOSP-Android-11/&title=Build AOSP Android 11"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://craiglin0322.github.io/2021/05/27/Build-AOSP-Android-11/&is_video=false&description=Build AOSP Android 11"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Build AOSP Android 11&body=Check out this article: https://craiglin0322.github.io/2021/05/27/Build-AOSP-Android-11/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://craiglin0322.github.io/2021/05/27/Build-AOSP-Android-11/&title=Build AOSP Android 11"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://craiglin0322.github.io/2021/05/27/Build-AOSP-Android-11/&title=Build AOSP Android 11"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://craiglin0322.github.io/2021/05/27/Build-AOSP-Android-11/&title=Build AOSP Android 11"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://craiglin0322.github.io/2021/05/27/Build-AOSP-Android-11/&title=Build AOSP Android 11"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://craiglin0322.github.io/2021/05/27/Build-AOSP-Android-11/&name=Build AOSP Android 11&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://craiglin0322.github.io/2021/05/27/Build-AOSP-Android-11/&t=Build AOSP Android 11"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Envrionment-set-up"><span class="toc-number">1.</span> <span class="toc-text">Envrionment set up</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#OS"><span class="toc-number">1.1.</span> <span class="toc-text">OS</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#JDK"><span class="toc-number">1.2.</span> <span class="toc-text">JDK</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Python"><span class="toc-number">1.3.</span> <span class="toc-text">Python</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Download-AOSP"><span class="toc-number">2.</span> <span class="toc-text">Download AOSP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Build"><span class="toc-number">3.</span> <span class="toc-text">Build</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Flash-to-device"><span class="toc-number">4.</span> <span class="toc-text">Flash to device</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Build AOSP Android 11
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Craig Lin</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-05-27T14:19:47.000Z" itemprop="datePublished">2021-05-27</time>
+        
+        (Updated: <time datetime="2021-05-27T14:26:26.015Z" itemprop="dateModified">2021-05-27</time>)
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/Android/">Android</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/AOSP/" rel="tag">AOSP</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>Encapsulate about how to build your own Android 11 from AOSP on Ubuntu 18.04</p>
+<hr>
+<h4 id="Envrionment-set-up"><a href="#Envrionment-set-up" class="headerlink" title="Envrionment set up"></a>Envrionment set up</h4><h5 id="OS"><a href="#OS" class="headerlink" title="OS"></a>OS</h5><p>It’s recommended to use Linux as your compile OS, since MAC is no longer supprted from June 22, 2021, <a target="_blank" rel="noopener" href="https://source.android.com/setup/build/requirements">see here</a>. And please make sure that at least 250GB of free disk space on your computer to check out the code and an extra 150 GB to build it.</p>
+<blockquote>
+<p>If you’re developing against the AOSP <code>master</code> branch, use Unbuntu 18.04</p>
+</blockquote>
+<p>For me, I use 18.04 Ubuntu. Install requires packages:</p>
+<blockquote>
+<p>sudo apt-get install git-core gnupg flex bison build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z1-dev libgl1-mesa-dev libxml2-utils xsltproc unzip fontconfig</p>
+</blockquote>
+<h5 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h5><p>The master branch of AOSP come with a prebuilt OpenJDK, so no addition installation of JDK is needed, but for those older version, please check it out on the Official Document and use the required version.</p>
+<h5 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h5><p>Use Python2.7 on your OS if you don’t have.</p>
+<blockquote>
+<p>sudo apt install python2.7 python-pip</p>
+</blockquote>
+<hr>
+<h4 id="Download-AOSP"><a href="#Download-AOSP" class="headerlink" title="Download AOSP"></a>Download AOSP</h4><p>First and formost, install the <strong>Repo</strong>. Reop unifies Git repositories when necessary, performs uploads to the <a target="_blank" rel="noopener" href="https://android-review.googlesource.com/">Gerrit revision control system</a>, and automates parts of the Android development workflow:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">mkdir ~/bin<br>PATH=~/bin:$PATH<br><br>curl https://storage.googleapis.com/git-repo-downloads/repo &gt; ~/bin/repo<br>chmod a+x ~/bin/repo<br></code></pre></td></tr></table></figure>
+
+<p>Then create a empty directory on your working files, like:</p>
+<blockquote>
+<p>mkdir DIR</p>
+<p>cd DIR</p>
+</blockquote>
+<p>Run <code>repo init</code> to get the latest version of Repo with its most recent bug fixes:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">repo init -u https://android.googlesource.com/platform/manifest<br></code></pre></td></tr></table></figure>
+
+<p>If you want to specify the version, add the corresponding branch with -b:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">repo init -u https://android.googlesource.com/platform/manifest -b master<br></code></pre></td></tr></table></figure>
+
+<p>See the <a target="_blank" rel="noopener" href="https://source.android.com/setup/start/build-numbers#source-code-tags-and-builds">Source code and tag</a>. For me, I use the latest Android 11 branch:</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><code class="hljs sh">repo init -u https://android.googlesource.com/platform/manifest -b android-11.0.0_r36<br></code></pre></td></tr></table></figure>
+
+<p>Then we run <code>repo sync</code> to download the AOSP, o speed syncs, pass the <code>-c</code> (current branch) and <code>-jthreadcount</code> flags:</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><code class="hljs sh">repo sync -c -j8<br></code></pre></td></tr></table></figure>
+
+<p>It will take 2-3 hours to download the entire codes, it depends on network speed.</p>
+<p>AOSP can’t be used from pure source code only and requires additional hardware-related proprietary libraries to run, such as for hardware graphics acceleration. Accordingly, you might as well download the related driver version from <a target="_blank" rel="noopener" href="https://developers.google.com/android/drivers">this site</a>, please keep in mind that you should download driver which should be same  Build ID as the branch you download on AOSP.</p>
+<p>For me, as I use <strong>android-11.0.0_r36</strong>, and my device is Pixel3, so here the drive version I use:</p>
+<blockquote>
+<figure class="highlight awk"><table><tr><td class="code"><pre><code class="hljs awk">https:<span class="hljs-regexp">//</span>developers.google.com<span class="hljs-regexp">/android/</span>drivers<span class="hljs-comment">#crosshatchrq2a.210505.002</span><br></code></pre></td></tr></table></figure>
+</blockquote>
+<hr>
+<h4 id="Build"><a href="#Build" class="headerlink" title="Build"></a>Build</h4><p>When the above work is done, firstly we extract the proprietary binaries.</p>
+<blockquote>
+<p>Each set of binaries comes as a self-extracting script in a compressed archive. Uncompress each archive, run the included self-extracting script from the root of the source tree, then confirm you agree to the terms of the enclosed license agreement. The binaries and their matching makefiles are installed in the <code>vendor/</code> hierarchy of the source tree.</p>
+</blockquote>
+<p>All things are considered! Let’s begin build our own system, execute commands on AOSP root dir</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">Initialize environment</span><br>source build/envsetup.sh<br><span class="hljs-meta">#</span><span class="bash">Choose <span class="hljs-built_in">which</span> target to build with lunch, check target on this site https://source.android.com/setup/build/building<span class="hljs-comment">#choose-a-target</span></span><br>aosp_blueline-userdebug<br><span class="hljs-meta">#</span><span class="bash"> Start build with m</span><br>m<br></code></pre></td></tr></table></figure>
+
+<p>If you encounter an issue like this:</p>
+<blockquote>
+<p>FAILED: ninja: ‘vendor/qcom/blueline/COPYRIGHT’, needed by ‘out/target/product/blueline/obj/NOTICE_FILES/src/system/app/QtiTelephonyService/QtiTelephonyService.apk.txt’, missing and no known rule to make it</p>
+</blockquote>
+<p>you can just directly add the empty COPYRIGHT file on corresponding path, that works for me.</p>
+<hr>
+<h4 id="Flash-to-device"><a href="#Flash-to-device" class="headerlink" title="Flash to device"></a>Flash to device</h4><p>Build the <code>fastboot</code> and <code>adb</code> with:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">make fastboot adb<br></code></pre></td></tr></table></figure>
+
+<p><strong>Unlocking the bootloader</strong>, open the developer options and enable the <code>OEM unlocking</code> option, if it’s gray out, connect to the internet so the device can check in at least once. If it remains disabled, your device might be SIM locked by your carrier and the bootloader can’t be unlocked.</p>
+<blockquote>
+<p><strong>If it still unchanged, the only reason is that you are a carrier version device which means that this device is force locked by carrier, you should consider another one.</strong></p>
+</blockquote>
+<p>Then execute next command:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">adb reboot bootloader<br><br>fastboot flashall -w<br></code></pre></td></tr></table></figure>
+
+<p>When flash work is done, now you have  own AOSP build on your device!</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories">Categories</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/CraigLin0322">Projects</a></li>
+         
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Envrionment-set-up"><span class="toc-number">1.</span> <span class="toc-text">Envrionment set up</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#OS"><span class="toc-number">1.1.</span> <span class="toc-text">OS</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#JDK"><span class="toc-number">1.2.</span> <span class="toc-text">JDK</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Python"><span class="toc-number">1.3.</span> <span class="toc-text">Python</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Download-AOSP"><span class="toc-number">2.</span> <span class="toc-text">Download AOSP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Build"><span class="toc-number">3.</span> <span class="toc-text">Build</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Flash-to-device"><span class="toc-number">4.</span> <span class="toc-text">Flash to device</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://craiglin0322.github.io/2021/05/27/Build-AOSP-Android-11/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://craiglin0322.github.io/2021/05/27/Build-AOSP-Android-11/&text=Build AOSP Android 11"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://craiglin0322.github.io/2021/05/27/Build-AOSP-Android-11/&title=Build AOSP Android 11"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://craiglin0322.github.io/2021/05/27/Build-AOSP-Android-11/&is_video=false&description=Build AOSP Android 11"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Build AOSP Android 11&body=Check out this article: https://craiglin0322.github.io/2021/05/27/Build-AOSP-Android-11/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://craiglin0322.github.io/2021/05/27/Build-AOSP-Android-11/&title=Build AOSP Android 11"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://craiglin0322.github.io/2021/05/27/Build-AOSP-Android-11/&title=Build AOSP Android 11"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://craiglin0322.github.io/2021/05/27/Build-AOSP-Android-11/&title=Build AOSP Android 11"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://craiglin0322.github.io/2021/05/27/Build-AOSP-Android-11/&title=Build AOSP Android 11"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://craiglin0322.github.io/2021/05/27/Build-AOSP-Android-11/&name=Build AOSP Android 11&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://craiglin0322.github.io/2021/05/27/Build-AOSP-Android-11/&t=Build AOSP Android 11"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2021
+    Craig Lin
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/categories">Categories</a></li>
+         
+          <li><a href="/tags">Tags</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/CraigLin0322">Projects</a></li>
+         
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
